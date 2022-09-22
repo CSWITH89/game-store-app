@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import {TouchableOpacity, Text, Image, View} from 'react-native';
+import {TouchableOpacity, Pressable, Text, Image, View} from 'react-native';
 import * as React from 'react';
-import {SCREEN_HEIGHT} from 'constants/Layout';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'constants/Layout';
 import {Spacer} from 'components';
 import {startCase} from 'lodash';
 import {useNavigation} from '@react-navigation/native';
@@ -12,44 +12,66 @@ type TProductCardProps = {
 };
 
 const ProductCard = ({item}: TProductCardProps) => {
+  // Product takes a poster image, title, description or developer
+  // wishlist status, previous price, current price, sale discount
+  // width has to be larger than a third
+  // Pressable
+
+  const title = 'Grand Theft Auto V: Definitive Edition';
+  const developer = 'Rockstar';
+  const status = 'default';
+  const currentPrice = '30.00';
+  const salePrice = '14.99';
+  const percentageDiscount = '50';
+
   const navigation = useNavigation();
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate('Product Details', item)}
-      style={{
-        flex: 1,
-        flexDirection: 'column',
-        padding: 1,
-        borderColor: 'lightgrey',
-        borderWidth: 1,
-      }}>
-      <Image
+    <Pressable onPress={() => navigation.navigate('Product Details', item)}>
+      <View
         style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: SCREEN_HEIGHT * 0.3,
-        }}
-        source={{uri: item.images[0].thumb}}
-      />
-      <View style={{marginLeft: 5}}>
-        <Text
+          borderRadius: 5,
+          width: SCREEN_WIDTH * 0.38,
+          overflow: 'hidden',
+        }}>
+        <Image
           style={{
-            fontWeight: '700',
-            fontSize: 16,
-          }}>
-          {`€ ${item.price}`}
-        </Text>
-        <Spacer height={5} />
-        <Text
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: SCREEN_HEIGHT * 0.26,
+          }}
+          source={{
+            uri: 'https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg',
+          }}
+        />
+        <View
           style={{
-            fontWeight: '600',
-            fontSize: 14,
-            color: 'orange',
+            paddingHorizontal: 8,
+            paddingVertical: 6,
+            backgroundColor: '#3a3a3c',
           }}>
-          {startCase(item.title)}
-        </Text>
+          <Text
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={{
+              fontWeight: '700',
+              fontSize: 12,
+              color: '#bcbcbd',
+            }}>
+            {title}
+          </Text>
+          <Spacer height={5} />
+          <Text
+            style={{
+              fontWeight: '600',
+              fontSize: 10,
+              color: '#68686c',
+            }}>
+            {startCase(developer)}
+          </Text>
+          <View></View>
+        </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
