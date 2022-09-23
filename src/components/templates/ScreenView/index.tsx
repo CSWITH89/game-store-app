@@ -14,7 +14,7 @@ const ScreenView = ({hasScroll, children}: TScreenViewProps) => {
       Platform.OS === 'android' ? bottomInset + 20 : bottomInset + 10,
   };
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: '#1c1c1e'}}>
       {hasScroll ? (
         <ScrollView
           showsVerticalScrollIndicator={false}
