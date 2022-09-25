@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {StyleSheet, View, Text, Image, ImageBackground} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../constants/Layout';
-import LinearGradient from 'react-native-linear-gradient';
+import CarouselCard from '../CarouselCard';
 
 const RNCarousel = ({items}) => {
   const [state, setState] = React.useState({
@@ -11,101 +11,54 @@ const RNCarousel = ({items}) => {
 
   const carouselItems = [
     {
-      title: 'Item 1',
-      text: 'Text 1',
       type: 'poster',
       image:
         'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans/41316928/7a96241dbe13ab18376b9a57dd53d1d8a7417e68.jpg',
+      gameData: {},
     },
     {
-      title: 'Item 2',
-      text: 'Text 2',
+      title: 'PAYDAY 2',
+      description:
+        'Pull off the heist of the century with our daily flash deal. Lock and load!',
       type: 'game',
+      ctaText: 'Up to -50%',
       image:
         'https://cdn.windowsreport.com/wp-content/uploads/2020/06/payday-2-lag-930x620.jpg',
+      gameData: {},
     },
     {
-      title: 'Item 3',
-      text: 'Text 3',
+      title: 'Wolfenstein Weekend Sale',
+      description:
+        'Limited time offer on the epic Wolfenstein franchise. Storm Castle Wolfenstein!',
       type: 'game',
+      ctaText: 'Up to -80%',
       image:
-        'https://cdn.windowsreport.com/wp-content/uploads/2020/06/payday-2-lag-930x620.jpg',
+        'https://cdn-0.studybreaks.com/wp-content/uploads/2017/09/AOWLFN2_CVR_4x6_SOL.0.jpg?ezimgfmt=rs:0x0/rscb6/ngcb6/notWebP',
+      gameData: {},
     },
     {
-      title: 'Item 4',
-      text: 'Text 4',
+      title: 'Tacticon Convention & Sale',
+      ctaText: 'Up to -75%',
+      description:
+        'Grab a huge deal with our limited time offer on these best-in-class strategy games',
       type: 'game',
       image:
-        'https://cdn.windowsreport.com/wp-content/uploads/2020/06/payday-2-lag-930x620.jpg',
+        'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/clans//42427156/b5a86f1c78b6be7bbff4609ac224ede590674d94.png',
+      gameData: {},
     },
     {
-      title: 'Item 5',
-      text: 'Text 5',
-      type: 'game',
+      type: 'poster',
       image:
-        'https://cdn.windowsreport.com/wp-content/uploads/2020/06/payday-2-lag-930x620.jpg',
+        'https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/capsule_616x353.jpg',
+      gameData: {},
     },
   ];
-  // const renderPagination = () => {
-  //   return (
-  //     <Pagination
-  //       dotsLength={carouselItems.length}
-  //       activeDotIndex={state.activeIndex}
-  //       dotStyle={styles.dot}
-  //       inactiveDotStyle={
-  //         {
-  //           // Define styles for inactive dots here
-  //         }
-  //       }
-  //       inactiveDotOpacity={0.4}
-  //       inactiveDotScale={0.6}
-  //     />
-  //   );
-  // };
-
-  const renderItem = ({item, index}) => {
-    if (item.type === 'poster') {
-      return (
-        <View style={styles.slide}>
-          <Image
-            source={{uri: item.image}}
-            resizeMode="cover"
-            style={{height: '100%', width: '100%'}}
-          />
-        </View>
-      );
-    }
-    return (
-      <View style={styles.slide}>
-        <ImageBackground
-          source={{uri: item.image}}
-          resizeMode="cover"
-          style={{height: '100%', width: '100%'}}>
-          <View
-            style={{
-              backgroundColor: 'black',
-              position: 'absolute',
-              height: '35%',
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}>
-            <LinearGradient
-              colors={['#237da5', '#195577']}
-              style={styles.linearGradient}>
-              <Text>Sign in with Facebook</Text>
-            </LinearGradient>
-          </View>
-        </ImageBackground>
-      </View>
-    );
-  };
 
   return (
     <View>
       <Carousel
         data={carouselItems}
-        renderItem={renderItem}
+        renderItem={CarouselCard}
         onSnapToItem={index => setState({activeIndex: index})}
         sliderWidth={SCREEN_WIDTH}
         itemWidth={SCREEN_WIDTH * 0.85}
@@ -169,6 +122,9 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     flex: 1,
+    paddingHorizontal: 14,
+    paddingTop: 4,
+    paddingBottom: 8,
   },
 });
 
