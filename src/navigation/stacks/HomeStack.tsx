@@ -8,7 +8,7 @@ import {Text, View} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-const AppStack = () => {
+const HomeStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -53,4 +53,4 @@ const AppStack = () => {
   );
 };
 
-export default AppStack;
+export default HomeStack;

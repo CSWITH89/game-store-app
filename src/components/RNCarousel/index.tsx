@@ -63,8 +63,8 @@ const RNCarousel = ({items}) => {
         sliderWidth={SCREEN_WIDTH}
         itemWidth={SCREEN_WIDTH * 0.85}
         autoplay
-        autoplayDelay={6000}
-        autoplayInterval={5000}
+        autoplayDelay={10000}
+        autoplayInterval={10000}
         loop
       />
       <View style={styles.paginationRow}>

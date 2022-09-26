@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {StyleSheet, View, Text, Image, ImageBackground} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ImageBackground,
+  Pressable,
+} from 'react-native';
 import {SCREEN_HEIGHT} from '../../constants/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import Spacer from '../Spacer';
@@ -15,7 +22,7 @@ type TCardData = {
 };
 
 type TCarouselCardProps = {
-  item: TCardData;
+  item: any;
   index: number;
 };
 
@@ -25,17 +32,22 @@ const CarouselCard = ({
 }: TCarouselCardProps) => {
   if (type === 'poster') {
     return (
-      <View style={styles.slide}>
+      <Pressable
+        style={styles.slide}
+        onPress={() => console.log('Navigate ', gameData)}>
         <Image
           source={{uri: image}}
           resizeMode="cover"
           style={styles.posterImage}
         />
-      </View>
+      </Pressable>
     );
   } else if (type === 'game') {
     return (
-      <View key={index} style={styles.slide}>
+      <Pressable
+        key={index}
+        style={styles.slide}
+        onPress={() => console.log('Navigate ', gameData)}>
         <ImageBackground
           source={{uri: image}}
           resizeMode="cover"
@@ -64,7 +76,7 @@ const CarouselCard = ({
             </LinearGradient>
           </View>
         </ImageBackground>
-      </View>
+      </Pressable>
     );
   } else {
   }

@@ -1,10 +1,18 @@
 import * as React from 'react';
-import {ActivityIndicator, FlatList} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  ScrollView,
+  View,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import ScreenView from 'components/templates/ScreenView';
 import {getProductDataAPI} from 'contexts/api/endpoints';
 import {ProductCard, RNCarousel} from 'components';
-import {TProduct} from '../../constants/globalTypes';
-import {Spacer} from '../../components';
+import {TProduct} from 'constants/globalTypes';
+import {Spacer} from 'components';
+import LinearGradient from 'react-native-linear-gradient';
 
 const renderProduct = (item: TProduct) => {
   return <ProductCard item={item} />;
@@ -26,10 +34,38 @@ const Home = () => {
   }, []);
 
   return (
-    <ScreenView>
+    <ScreenView hasScroll>
       <Spacer height={20} />
       <RNCarousel />
-      <ProductCard />
+      <LinearGradient
+        colors={['#237da5', '#195577']}
+        style={styles.linearGradient}>
+        <View>
+          <Text
+            style={{
+              color: '#FFF',
+              fontSize: 18,
+              fontWeight: '700',
+            }}>
+            Featured & Recommended
+          </Text>
+        </View>
+        <Spacer height={12} />
+        <ScrollView horizontal>
+          <ProductCard />
+          <View style={{marginRight: 20}} />
+          <ProductCard />
+          <View style={{marginRight: 20}} />
+          <ProductCard />
+          <View style={{marginRight: 20}} />
+          <ProductCard />
+          <View style={{marginRight: 20}} />
+          <ProductCard />
+          <View style={{marginRight: 20}} />
+        </ScrollView>
+      </LinearGradient>
+      <Spacer height={5} />
+
       {/* {!isLoading && productData.length > 0 && (
         <FlatList
           data={productData}
@@ -43,5 +79,14 @@ const Home = () => {
     </ScreenView>
   );
 };
+
+const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 18,
+    paddingTop: 10,
+    paddingBottom: 20,
+  },
+});
 
 export default Home;
