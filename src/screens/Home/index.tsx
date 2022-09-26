@@ -51,12 +51,34 @@ const Home = () => {
           </Text>
         </View>
         <Spacer height={12} />
-        <ScrollView horizontal>
-          <ProductCard />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={{marginRight: 5}} />
+          <ProductCard
+            title="Resident Evil Village"
+            image="https://cdn.cdkeys.com/700x700/media/catalog/product/r/e/resident_evil_village_pc_cover.jpg"
+            developer="CAPCOM"
+            status="default"
+            currentPrice="39.99"
+          />
           <View style={{marginRight: 20}} />
-          <ProductCard />
+          <ProductCard
+            image="https://image.api.playstation.com/vulcan/ap/rnd/202205/2800/W5uSEsW7yefCNTHatS03v5q7.png"
+            title="Call of Duty®: Modern Warfare® II"
+            developer="Infinity Ward, Raven Software, Beenox, Treyarch, High Moon Studios"
+            status="default"
+            currentPrice="69.99"
+          />
           <View style={{marginRight: 20}} />
-          <ProductCard />
+          <ProductCard image="https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg" />
+          <View style={{marginRight: 20}} />
+
+          <ProductCard
+            image="https://image.api.playstation.com/vulcan/ap/rnd/202205/2800/W5uSEsW7yefCNTHatS03v5q7.png"
+            title="Call of Duty®: Modern Warfare® II"
+            developer="Infinity Ward, Raven Software, Beenox, Treyarch, High Moon Studios"
+            status="default"
+            currentPrice="69.99"
+          />
           <View style={{marginRight: 20}} />
           <ProductCard />
           <View style={{marginRight: 20}} />

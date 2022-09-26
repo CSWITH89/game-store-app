@@ -11,19 +11,28 @@ type TProductCardProps = {
   item: TProduct;
 };
 
-const ProductCard = ({item}: TProductCardProps) => {
+const ProductCard = ({
+  image = 'https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg',
+  title = 'Grand Theft Auto V',
+  developer = 'Rockstar',
+  status = 'default',
+  currentPrice = '29.98',
+  // salePrice = '14.99',
+  salePrice = null,
+  percentageDiscount = '50',
+}: TProductCardProps) => {
   // Product takes a poster image, title, description or developer
   // wishlist status, previous price, current price, sale discount
   // width has to be larger than a third
   // Pressable
 
-  const title = 'Grand Theft Auto V: Definitive Edition';
-  const developer = 'Rockstar';
-  const status = 'default';
-  const currentPrice = '30.00';
+  // const title = 'Grand Theft Auto V: Definitive Edition';
+  // const developer = 'Rockstar';
+  // const status = 'default';
+  // const currentPrice = '30.00';
   // const salePrice = '14.99';
-  const salePrice = null;
-  const percentageDiscount = '50';
+  // // const salePrice = null;
+  // const percentageDiscount = '50';
 
   // const navigation = useNavigation();
   return (
@@ -37,18 +46,23 @@ const ProductCard = ({item}: TProductCardProps) => {
         <Image
           style={styles.image}
           source={{
-            uri: 'https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg',
+            uri: image,
           }}
         />
         {/* Information Wrapper */}
         <View style={styles.informationWrapper}>
           {/* Title Row */}
-          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.titleText}>
+          <Text numberOfLines={1} ellipsizeMode="tail" style={styles.titleText}>
             {title}
           </Text>
           <Spacer height={5} />
           {/* Developer Information Row */}
-          <Text style={styles.developerText}>{developer}</Text>
+          <Text
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={styles.developerText}>
+            {developer}
+          </Text>
           {/* Discount Row */}
           <View>
             {percentageDiscount ? (
@@ -59,7 +73,7 @@ const ProductCard = ({item}: TProductCardProps) => {
           </View>
           {/* Wishlist & Price Row */}
           <View style={styles.priceRow}>
-            <Heart width={10} height={10} fill={'#68686c'} />
+            <Heart width={12} height={12} fill={'#68686c'} />
             {/* Current Price & Sale Price */}
             <View style={styles.pricesContainer}>
               {currentPrice && (
@@ -96,18 +110,18 @@ const ProductCard = ({item}: TProductCardProps) => {
 
 const styles = StyleSheet.create({
   pressableContainer: {
+    marginVertical: 2,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 12,
     },
     shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-
+    shadowRadius: 6.0,
     elevation: 24,
   },
   cardWrapper: {
-    borderRadius: 5,
+    borderRadius: 10,
     width: SCREEN_WIDTH * 0.38,
     overflow: 'hidden',
   },
@@ -123,12 +137,12 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontWeight: '700',
-    fontSize: 12,
+    fontSize: 14,
     color: '#bcbcbd',
   },
   developerText: {
     fontWeight: '600',
-    fontSize: 10,
+    fontSize: 12,
     color: '#68686c',
   },
   priceRow: {
@@ -140,12 +154,12 @@ const styles = StyleSheet.create({
   },
   currentPriceText: {
     fontWeight: '700',
-    fontSize: 10,
+    fontSize: 12,
     color: '#bcbcbd',
   },
   salePriceText: {
     fontWeight: '700',
-    fontSize: 10,
+    fontSize: 12,
     color: '#bcbcbd',
   },
   inactiveText: {
