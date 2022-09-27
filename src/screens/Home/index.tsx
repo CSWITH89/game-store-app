@@ -13,6 +13,7 @@ import {ProductCard, RNCarousel} from 'components';
 import {TProduct} from 'constants/globalTypes';
 import {Spacer} from 'components';
 import LinearGradient from 'react-native-linear-gradient';
+import {API_KEY} from '@env';
 
 const renderProduct = (item: TProduct) => {
   return <ProductCard item={item} />;
