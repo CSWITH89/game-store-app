@@ -10,6 +10,7 @@ import BarsArrowDown from 'assets/images/BarsArrowDown.svg';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeStack from './HomeStack';
+import {Settings} from 'screens';
 
 const AppStack = () => {
   const Tab = createBottomTabNavigator();
@@ -93,7 +94,7 @@ const AppStack = () => {
         />
         <Tab.Screen
           name="Community"
-          component={HomeStack}
+          component={Settings}
           options={{
             tabBarIcon: ({focused}) =>
               focused ? (
@@ -109,7 +110,7 @@ const AppStack = () => {
         />
         <Tab.Screen
           name="Shopping"
-          component={HomeStack}
+          component={Settings}
           options={{
             tabBarIcon: ({focused}) =>
               focused ? (
@@ -125,7 +126,7 @@ const AppStack = () => {
         />
         <Tab.Screen
           name="Guard"
-          component={HomeStack}
+          component={Settings}
           options={{
             tabBarIcon: ({focused}) =>
               focused ? (
