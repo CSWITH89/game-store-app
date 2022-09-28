@@ -14,6 +14,7 @@ import {TProduct} from 'constants/globalTypes';
 import {Spacer} from 'components';
 import LinearGradient from 'react-native-linear-gradient';
 import {API_KEY} from '@env';
+import {getGamesList} from '../../contexts/api/endpoints';
 
 const renderProduct = (item: TProduct) => {
   return <ProductCard item={item} />;
@@ -24,14 +25,15 @@ const Home = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    const loadProductData = async () => {
-      setIsLoading(true);
-      const newData = await getProductDataAPI();
-      setProductData(newData);
-      setIsLoading(false);
+    const loadData = async () => {
+      // setIsLoading(true);
+      // const newData = await getProductDataAPI();
+      // setProductData(newData);
+      // setIsLoading(false);
+      await getGamesList();
     };
 
-    loadProductData();
+    loadData();
   }, []);
 
   return (

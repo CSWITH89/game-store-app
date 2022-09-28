@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Squares from 'assets/images/Squares.svg';
 import {ProfileIcon} from 'components';
-import {Text, View} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import Home from 'assets/images/Home.svg';
 import ShoppingBag from 'assets/images/ShoppingBag.svg';
 import ChatBubble from 'assets/images/ChatBubble.svg';
@@ -79,28 +79,64 @@ const AppStack = () => {
           name="Home"
           component={HomeStack}
           options={{
-            tabBarIcon: () => <Home height={30} width={30} />,
+            tabBarIcon: ({focused}) =>
+              focused ? (
+                <View style={styles.activeIcon}>
+                  <Home height={30} width={30} />
+                </View>
+              ) : (
+                <View style={styles.inactiveIcon}>
+                  <Home height={30} width={30} />
+                </View>
+              ),
           }}
         />
         <Tab.Screen
           name="Community"
           component={HomeStack}
           options={{
-            tabBarIcon: () => <ChatBubble height={30} width={30} />,
+            tabBarIcon: ({focused}) =>
+              focused ? (
+                <View style={styles.activeIcon}>
+                  <ChatBubble height={30} width={30} />
+                </View>
+              ) : (
+                <View style={styles.inactiveIcon}>
+                  <ChatBubble height={30} width={30} />
+                </View>
+              ),
           }}
         />
         <Tab.Screen
           name="Shopping"
           component={HomeStack}
           options={{
-            tabBarIcon: () => <ShoppingBag height={30} width={30} />,
+            tabBarIcon: ({focused}) =>
+              focused ? (
+                <View style={styles.activeIcon}>
+                  <ShoppingBag height={30} width={30} />
+                </View>
+              ) : (
+                <View style={styles.inactiveIcon}>
+                  <ShoppingBag height={30} width={30} />
+                </View>
+              ),
           }}
         />
         <Tab.Screen
           name="Guard"
           component={HomeStack}
           options={{
-            tabBarIcon: () => <BarsArrowDown height={30} width={30} />,
+            tabBarIcon: ({focused}) =>
+              focused ? (
+                <View style={styles.activeIcon}>
+                  <BarsArrowDown height={30} width={30} />
+                </View>
+              ) : (
+                <View style={styles.inactiveIcon}>
+                  <BarsArrowDown height={30} width={30} />
+                </View>
+              ),
           }}
         />
         {/* each screen has options, tabbaricon attribute, reutrn a function  */}
@@ -109,5 +145,18 @@ const AppStack = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  activeIcon: {
+    marginTop: -40,
+    backgroundColor: '#2189ff',
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inactiveIcon: {marginTop: 20},
+});
 
 export default AppStack;

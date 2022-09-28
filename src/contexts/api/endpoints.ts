@@ -1,12 +1,14 @@
-import ProductData from 'constants/ProductData';
+import axiosInstance from 'contexts/api/axiosInstance';
 
-const getProductDataAPI = async () => {
-  /** This is where the api GET call would be made to the backend via axios
-   * The async await here is for the purpose of mocking an endpoint call
-   */
-  const response = await ProductData;
-
-  return response;
+/**
+ * GET. Request a list of games
+ */
+const getGamesList = async () => {
+  // const endpoint = `https://api.rawg.io/api/games?key=${key}`;
+  const response = await axiosInstance.get('/games');
+  console.log('RES ', response.data);
 };
 
-export {getProductDataAPI};
+// : Promise<TGameData[]>
+
+export {getGamesList};
