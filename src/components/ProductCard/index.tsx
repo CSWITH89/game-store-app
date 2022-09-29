@@ -20,6 +20,7 @@ const ProductCard = ({
   // salePrice = '14.99',
   salePrice = null,
   percentageDiscount = '50',
+  onPress,
 }: TProductCardProps) => {
   // Product takes a poster image, title, description or developer
   // wishlist status, previous price, current price, sale discount
@@ -36,10 +37,7 @@ const ProductCard = ({
 
   // const navigation = useNavigation();
   return (
-    // TO-DO: Navigation
-    <Pressable
-      style={styles.pressableContainer}
-      onPress={() => console.log('Navigate to product details')}>
+    <Pressable style={styles.pressableContainer} onPress={onPress}>
       {/* Card Wrapper */}
       <View style={styles.cardWrapper}>
         {/* Image Content  */}

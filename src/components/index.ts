@@ -4,6 +4,7 @@ import RNCarousel from './RNCarousel';
 import ArrowButton from './ArrowButton';
 import CarouselCard from './CarouselCard';
 import ProfileIcon from './ProfileIcon';
+import CategorySection from './CategorySection';
 
 export {
   ProductCard,
@@ -12,4 +13,5 @@ export {
   ArrowButton,
   CarouselCard,
   ProfileIcon,
+  CategorySection,
 };

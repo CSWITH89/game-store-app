@@ -1,15 +1,31 @@
-export type TProductImage = {
-  thumb: string;
-  original: string;
-};
-
-export type TProductImages = TProductImage[];
-
-export type TProduct = {
+export type TGameData = {
+  added: number;
+  added_by_status: any[];
+  background_image: string;
+  clip: any;
+  dominant_color: string;
+  esrb_rating: any[];
+  genres: any[];
   id: number;
-  title: string;
-  description: string;
-  specification: string;
-  price: number;
-  images: TProductImages;
+  metacritic: number;
+  name: string;
+  parent_platforms: any[];
+  platforms: any[];
+  playtime: number;
+  rating: number;
+  rating_top: number;
+  ratings: any[];
+  ratings_count: number;
+  released: string;
+  reviews_count: number;
+  reviews_text_count: number;
+  saturated_color: string;
+  short_screenshots: any[];
+  slug: string;
+  stores: any[];
+  suggestions_count: number;
+  tags: any[];
+  tba: boolean;
+  updated: Date;
+  user_game: any;
 };

@@ -1,117 +1,67 @@
 import * as React from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  ScrollView,
-  View,
-  StyleSheet,
-  Text,
-} from 'react-native';
 import ScreenView from 'components/templates/ScreenView';
-import {getProductDataAPI} from 'contexts/api/endpoints';
-import {ProductCard, RNCarousel} from 'components';
-import {TProduct} from 'constants/globalTypes';
-import {Spacer} from 'components';
-import LinearGradient from 'react-native-linear-gradient';
-import {API_KEY} from '@env';
-import {getGamesList} from '../../contexts/api/endpoints';
+import {RNCarousel, CategorySection, Spacer} from 'components';
+import {getGamesList} from 'contexts/api/endpoints';
+import {Alert} from 'react-native';
+// "count": 802376,
+//   "description": "",
+//   "filters": {
 
-const renderProduct = (item: TProduct) => {
-  return <ProductCard item={item} />;
-};
+//   },
+//   "next": "https://api.rawg.io/api/games?key=9aa8f751f06c4c32b1f87f7a0c9bfdd8&page=2",
+//   "nofollow": false,
+//   "nofollow_collections": [
+//     "stores"
+//   ],
+//   "noindex": false,
+//   "previous": null,
+//   "results": [
+// "seo_description": "",
+// "seo_h1": "All Games",
+// "seo_keywords": "",
+// "seo_title": "All Games"
 
 const Home = () => {
-  const [productData, setProductData] = React.useState([]);
+  const [productData, setProductData] = React.useState<any[] | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const loadData = async () => {
-      // setIsLoading(true);
-      // const newData = await getProductDataAPI();
-      // setProductData(newData);
-      // setIsLoading(false);
-      await getGamesList();
+      try {
+        setIsLoading(true);
+        const newData = await getGamesList();
+        setProductData(newData);
+      } catch (error) {
+        Alert.alert('An error was encountered. Please try again later');
+        console.log('Error: ', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
-
-    loadData();
-  }, []);
+    if (!productData) {
+      loadData();
+    }
+  }, [productData]);
 
   return (
     <ScreenView hasScroll>
       <Spacer height={20} />
       <RNCarousel />
-      <LinearGradient
-        colors={['#237da5', '#195577']}
-        style={styles.linearGradient}>
-        <View>
-          <Text
-            style={{
-              color: '#FFF',
-              fontSize: 18,
-              fontWeight: '700',
-            }}>
-            Featured & Recommended
-          </Text>
-        </View>
-        <Spacer height={12} />
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View style={{marginRight: 5}} />
-          <ProductCard
-            title="Resident Evil Village"
-            image="https://cdn.cdkeys.com/700x700/media/catalog/product/r/e/resident_evil_village_pc_cover.jpg"
-            developer="CAPCOM"
-            status="default"
-            currentPrice="39.99"
-          />
-          <View style={{marginRight: 20}} />
-          <ProductCard
-            image="https://image.api.playstation.com/vulcan/ap/rnd/202205/2800/W5uSEsW7yefCNTHatS03v5q7.png"
-            title="Call of Duty®: Modern Warfare® II"
-            developer="Infinity Ward, Raven Software, Beenox, Treyarch, High Moon Studios"
-            status="default"
-            currentPrice="69.99"
-          />
-          <View style={{marginRight: 20}} />
-          <ProductCard image="https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg" />
-          <View style={{marginRight: 20}} />
-
-          <ProductCard
-            image="https://image.api.playstation.com/vulcan/ap/rnd/202205/2800/W5uSEsW7yefCNTHatS03v5q7.png"
-            title="Call of Duty®: Modern Warfare® II"
-            developer="Infinity Ward, Raven Software, Beenox, Treyarch, High Moon Studios"
-            status="default"
-            currentPrice="69.99"
-          />
-          <View style={{marginRight: 20}} />
-          <ProductCard />
-          <View style={{marginRight: 20}} />
-          <ProductCard />
-          <View style={{marginRight: 20}} />
-        </ScrollView>
-      </LinearGradient>
-      <Spacer height={5} />
-
-      {/* {!isLoading && productData.length > 0 && (
-        <FlatList
-          data={productData}
-          renderItem={({item}) => renderProduct(item)}
-          numColumns={2}
-          keyExtractor={index => index}
-        />
-      )}
-
-      {isLoading ? <ActivityIndicator /> : null} */}
+      <CategorySection
+        withGradient
+        isLoading={isLoading}
+        categoryTitle="Featured & Recommended"
+        productData={productData}
+      />
+      <Spacer height={30} />
+      <CategorySection
+        isLoading={isLoading}
+        categoryTitle="New Releases"
+        productData={productData}
+      />
+      <Spacer height={100} />
     </ScreenView>
   );
 };
-
-const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    paddingLeft: 18,
-    paddingTop: 10,
-    paddingBottom: 20,
-  },
-});
 
 export default Home;
