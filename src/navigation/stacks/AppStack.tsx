@@ -19,59 +19,23 @@ const AppStack = () => {
       <Tab.Navigator
         screenOptions={{
           tabBarShowLabel: false,
-          tabBarStyle: {
-            backgroundColor: '#2c2c2e',
-            borderTopWidth: 0,
-            borderRadius: 20,
-            position: 'absolute',
-            left: 0,
-            bottom: 0,
-            right: 0,
-          },
-          // tabBarInactiveBackgroundColor: '#1c1c1e',
-          // tabBarActiveBackgroundColor: '#1c1c1e',
+          tabBarStyle: styles.tabBarStyle,
           headerTitleAlign: 'left',
           headerShadowVisible: false,
-          headerStyle: {backgroundColor: '#1c1c1e'},
+          headerStyle: styles.tabHeaderStyle,
           headerLeft: () => (
-            <View
-              style={{
-                marginLeft: 10,
-              }}>
+            <View style={styles.headerLeftStyle}>
               <Squares height={32} width={32} />
             </View>
           ),
           headerTitle: () => (
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  color: '#FFF',
-                  fontSize: 30,
-                  fontWeight: '700',
-                  marginRight: 5,
-                }}>
-                Steam
-              </Text>
-              <Text
-                style={{
-                  color: '#FFF',
-                  fontSize: 30,
-                  fontWeight: '300',
-                }}>
-                Core
-              </Text>
+            <View style={styles.headerTitleStyle}>
+              <Text style={styles.boldLogoText}>Steam</Text>
+              <Text style={styles.regularLogoText}>Core</Text>
             </View>
           ),
           headerRight: () => (
-            <View
-              style={{
-                marginRight: 14,
-              }}>
+            <View style={styles.headerRightStyle}>
               <ProfileIcon />
             </View>
           ),
@@ -140,8 +104,6 @@ const AppStack = () => {
               ),
           }}
         />
-        {/* each screen has options, tabbaricon attribute, reutrn a function  */}
-        {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -158,6 +120,38 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inactiveIcon: {marginTop: 20},
+  boldLogoText: {
+    color: '#FFF',
+    fontSize: 30,
+    fontWeight: '700',
+    marginRight: 5,
+  },
+  regularLogoText: {
+    color: '#FFF',
+    fontSize: 30,
+    fontWeight: '300',
+  },
+  headerRightStyle: {
+    marginRight: 14,
+  },
+  headerTitleStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerLeftStyle: {
+    marginLeft: 10,
+  },
+  tabBarStyle: {
+    backgroundColor: '#2c2c2e',
+    borderTopWidth: 0,
+    borderRadius: 20,
+    position: 'absolute',
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+  tabHeaderStyle: {backgroundColor: '#1c1c1e'},
 });
 
 export default AppStack;
