@@ -29,3 +29,19 @@ export type TGameData = {
   updated: Date;
   user_game: any;
 };
+
+export type TGameResponse = {
+  count: number;
+  description: string;
+  filters: any;
+  next: string;
+  nofollow: boolean;
+  nofollow_collections: string[];
+  noindex: boolean;
+  previous: null | boolean;
+  results: TGameData[];
+  seo_description: string;
+  seo_h1: string;
+  seo_keywords: string;
+  seo_title: string;
+};

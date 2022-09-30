@@ -1,9 +1,8 @@
-/* eslint-disable react-native/no-inline-styles */
 import {Pressable, Text, Image, View, StyleSheet} from 'react-native';
 import * as React from 'react';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'constants/Layout';
 import {Spacer} from 'components';
-// import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {TProduct} from '../../constants/globalTypes';
 import Heart from 'assets/images/Heart.svg';
 
@@ -20,24 +19,13 @@ const ProductCard = ({
   // salePrice = '14.99',
   salePrice = null,
   percentageDiscount = '50',
-  onPress,
+  gameData,
 }: TProductCardProps) => {
-  // Product takes a poster image, title, description or developer
-  // wishlist status, previous price, current price, sale discount
-  // width has to be larger than a third
-  // Pressable
-
-  // const title = 'Grand Theft Auto V: Definitive Edition';
-  // const developer = 'Rockstar';
-  // const status = 'default';
-  // const currentPrice = '30.00';
-  // const salePrice = '14.99';
-  // // const salePrice = null;
-  // const percentageDiscount = '50';
-
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
-    <Pressable style={styles.pressableContainer} onPress={onPress}>
+    <Pressable
+      style={styles.pressableContainer}
+      onPress={() => navigation.navigate('ProductDetails', gameData)}>
       {/* Card Wrapper */}
       <View style={styles.cardWrapper}>
         {/* Image Content  */}

@@ -37,6 +37,7 @@ const CategorySection = ({
                   developer={product.tags[0].name || ''}
                   status="default"
                   currentPrice="39.99"
+                  gameData={product}
                 />
               </View>
             );

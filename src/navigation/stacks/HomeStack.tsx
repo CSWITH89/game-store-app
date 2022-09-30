@@ -19,7 +19,7 @@ const HomeStack = () => {
       <Stack.Screen
         name="ProductDetails"
         component={ProductDetails}
-        options={{headerShadowVisible: false}}
+        options={{headerShown: false, headerShadowVisible: false}}
       />
     </Stack.Navigator>
   );
