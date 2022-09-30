@@ -11,10 +11,14 @@ import ScreenView from 'components/templates/ScreenView';
 import {Spacer} from 'components';
 import {useNavigation} from '@react-navigation/native';
 import ArrowLeft from 'assets/images/ArrowLeft.svg';
+import {CartContext} from 'contexts/GlobalState';
+import {ArrowButton} from '../../components';
 
 const ProductDetails = ({route}: any) => {
   const productData = route.params;
   const navigation = useNavigation();
+
+  const {addToCart} = React.useContext(CartContext);
 
   return (
     <ScreenView>
@@ -33,12 +37,19 @@ const ProductDetails = ({route}: any) => {
           {productData.name}
         </Text>
         <Spacer height={10} />
-        <Text
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          style={styles.secondaryText}>
-          {productData.tags[0].name}
-        </Text>
+        <View style={styles.buyRow}>
+          <Text
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={styles.secondaryText}>
+            {productData.tags[0].name}
+          </Text>
+          <ArrowButton
+            text="Add to Cart"
+            onPress={() => addToCart(productData)}
+          />
+        </View>
+
         <Spacer height={20} />
         <Text
           numberOfLines={1}
@@ -147,6 +158,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#1c1c1e',
     opacity: 0.8,
+  },
+  buyRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
