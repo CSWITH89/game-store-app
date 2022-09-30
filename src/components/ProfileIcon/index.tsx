@@ -6,7 +6,7 @@ type TProfileIconProps = {
   onPress(): void;
 };
 
-const ProfileIcon = ({style, onPress}) => {
+const ProfileIcon = ({style, onPress}: TProfileIconProps) => {
   return (
     <Pressable style={[styles.icon, style]} onPress={onPress}>
       <Image

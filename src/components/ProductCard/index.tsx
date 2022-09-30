@@ -3,24 +3,31 @@ import * as React from 'react';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from 'constants/Layout';
 import {Spacer} from 'components';
 import {useNavigation} from '@react-navigation/native';
-import {TProduct} from '../../constants/globalTypes';
+import {TGameData} from 'constants/globalTypes';
 import Heart from 'assets/images/Heart.svg';
 
 type TProductCardProps = {
-  item: TProduct;
+  image: string;
+  title: string;
+  developer: string;
+  status: 'default' | 'wishlishted' | 'bought';
+  currentPrice: string;
+  salePrice: string | null;
+  percentageDiscount: string;
+  gameData: TGameData;
 };
 
 const ProductCard = ({
-  image = 'https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg',
-  title = 'Grand Theft Auto V',
-  developer = 'Rockstar',
-  status = 'default',
-  currentPrice = '29.98',
-  // salePrice = '14.99',
-  salePrice = null,
-  percentageDiscount = '50',
+  image,
+  title,
+  developer,
+  status,
+  currentPrice,
+  salePrice,
+  percentageDiscount,
   gameData,
 }: TProductCardProps) => {
+  // TO-DO Status
   const navigation = useNavigation();
   return (
     <Pressable

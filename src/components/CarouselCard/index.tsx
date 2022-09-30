@@ -12,14 +12,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import Spacer from '../Spacer';
 import ArrowButton from '../ArrowButton';
 
-type TCardData = {
-  type: 'poster' | 'game';
-  image: string;
-  title?: string;
-  description?: string;
-  ctaText?: string;
-  gameData: any;
-};
+// type TCardData = {
+//   type: 'poster' | 'game';
+//   image: string;
+//   title?: string;
+//   description?: string;
+//   ctaText?: string;
+//   gameData: any;
+// };
 
 type TCarouselCardProps = {
   item: any;

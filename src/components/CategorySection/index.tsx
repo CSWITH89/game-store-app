@@ -8,13 +8,21 @@ import {
 import * as React from 'react';
 import {ProductCard, Spacer} from 'components';
 import LinearGradient from 'react-native-linear-gradient';
+import {TGameResponse} from '../../constants/globalTypes';
+
+type TCategorySectionProps = {
+  withGradient: boolean;
+  isLoading: boolean;
+  categoryTitle: string;
+  productData: TGameResponse;
+};
 
 const CategorySection = ({
   withGradient,
   isLoading,
   categoryTitle,
   productData,
-}) => {
+}: TCategorySectionProps) => {
   return (
     <LinearGradient
       colors={withGradient ? ['#237da5', '#195577'] : ['#1c1c1e', '#1c1c1e']}
